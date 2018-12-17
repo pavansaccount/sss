@@ -1,0 +1,29 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <br>
+    <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+      <input type="hidden" name="email" #email="ngModel" [(ngModel)]="userDetails.email" placeholder="Email"  required [ngClass]="{'invalid-textbox' :signInForm.submitted && !email.valid }">
+      <div *ngIf="signInForm.submitted && email.errors?.pattern">
+        <label class="validation-message">Invalid email address.</label>
+      </div>
+      <input type="password" name="password" #password="ngModel" validateEqual="cpassword" reverse="true" [(ngModel)]="model.password" placeholder="Password" required minlength="4" [ngClass]="{'invalid-textbox' :signInForm.submitted && !password.valid }">
+      <div *ngIf="signInForm.submitted && password.errors?.minlength">
+        <label class="validation-message">Minimum 4 characters.</label>
+      </div>
+
+      <input type="password" name="cpassword" #cpassword="ngModel" validateEqual="password" [(ngModel)]="model.cpassword" placeholder="Confirm Password" required minlength="4" [ngClass]="{'invalid-textbox' :signInForm.submitted && !cpassword.valid }">
+      <div *ngIf="signInForm.submitted && cpassword.errors?.minlength">
+        <label class="validation-message">Minimum 4 characters.</label>
+      </div>
+      <small [hidden]="cpassword.valid ||  (cpassword.pristine && !signInForm.submitted)">
+        Password mismatch
+      </small>
+      <br>
+      <input type="submit" value="Update">
+    </form>
+    <!-- Error message -->
+    <!--<div class="alert" *ngIf="serverErrorMessages">
+      {{serverErrorMessages}}
+    </div>-->
+  </div>
+</div>

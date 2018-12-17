@@ -1,14 +1,52 @@
-<!doctype html>
+ <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Sss</title>
-  <base href="/">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+<head>
+    <meta charset="utf-8">
+    <title>Client</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="msapplication-starturl" content="/">
+  <meta name="theme-color" content="#f48c5b">
+
+  <link rel="manifest" href="/manifest.json">
 </head>
+
 <body>
-  <app-root></app-root>
+    <app-root></app-root>
+    <script src='https://www.google.com/recaptcha/api.js?render=6Lc9jXgUAAAAADKsJZ4l24fgJg_QGyyIfkGaUI7W'></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6Lc9jXgUAAAAADKsJZ4l24fgJg_QGyyIfkGaUI7W', {
+                    action: 'homepage'
+                })
+                .then(function(token) {
+                    document.getElementById('g').value = token;
+                });
+        });
+    </script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then((registration) => {
+            console.log('SW registered');
+          })
+          .catch((err) => {
+            console.log('SW error', err);
+          });
+      }
+    </script>
 </body>
+
 </html>

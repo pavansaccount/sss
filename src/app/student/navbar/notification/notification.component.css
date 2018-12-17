@@ -1,0 +1,10 @@
+.example-card {
+    max-width: 900px;
+    margin-left: 20%;
+    margin-top: 50px;
+    margin-right: 20%;
+}
+
+p {
+    margin-left: 15px;
+}

@@ -1,0 +1,56 @@
+<div class="wrapper" *ngIf="valid; else elsecode">
+  <div id="formContent">
+    <br>
+    <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+
+      <input type="text" name="rollno" #rollno="ngModel"  [(ngModel)]="model.rollno" placeholder="rollno" required [ngClass]="{'invalid-textbox' :signInForm.submitted && !rollno.valid }">
+      <div *ngIf="signInForm.submitted && rollno.errors?.required">
+        <label class="validation-message">rollno cannot be empty.</label>
+      </div>
+
+      <mat-form-field>
+        <mat-select name="year" #year="ngModel"  [(ngModel)]="model.year" placeholder="Select">
+          <mat-option value="year1sem1">year1sem1</mat-option>
+          <mat-option value="year1sem2">year1sem2</mat-option>
+          <mat-option value="year2sem1">year2sem1</mat-option>
+          <mat-option value="year2sem2">year2sem2</mat-option>
+          <mat-option value="year3sem1">year3sem1</mat-option>
+          <mat-option value="year3sem2">year3sem2</mat-option>
+          <mat-option value="year4sem1">year4sem1</mat-option>
+          <mat-option value="year4sem2">year4sem2</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <!-- Error message -->
+    <div class="alert" *ngIf="serverErrorMessages">
+      {{serverErrorMessages}}
+    </div>
+  </div>
+</div>
+<ng-template #elsecode>
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" >
+
+    <!-- Progress Column -->
+    <ng-container matColumnDef="subjectname">
+      <th mat-header-cell *matHeaderCellDef >
+        subname </th>
+      <td mat-cell *matCellDef="let emp"> {{emp.subname}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="marks">
+      <th mat-header-cell *matHeaderCellDef > marks </th>
+      <td mat-cell *matCellDef="let emp"> {{emp.submarks}} </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+  </table>
+
+</div>
+</ng-template>

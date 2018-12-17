@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #studentForm="ngForm" (ngSubmit)="onSubmit(studentForm)">
+
+                            <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="studentService.selectedStudent._id">
+
+                            <input type="text" #rollno="ngModel" [(ngModel)]="userDetails.rollno" name="rollno" placeholder="Email">
+                          <div class="row">
+                            <div class="input-field col s12">
+                              <input type="text" name="rollno" #rollno="ngModel" [(ngModel)]="studentService.selectedStudent.rollno" placeholder="Enter roll no" required>
+                              <label>rollno :
+                                <label class="red-text">*</label>
+                              </label>
+                            </div>
+                          </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="NAME" #name="ngModel" [(ngModel)]="studentService.selectedStudent.name" placeholder="ENTER full name" required>
+                                    <label>Name :
+                    <label class="red-text">*</label>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="position" #name="ngModel" [(ngModel)]="studentService.selectedStudent.position" placeholder="Enter course">
+                                    <label>Course :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="office" #name="ngModel" [(ngModel)]="studentService.selectedStudent.office" placeholder="Enter branch">
+                                    <label>Branch :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input type="text" name="salary" #name="ngModel" [(ngModel)]="studentService.selectedStudent.salary" placeholder="Enter year ">
+                                    <label>Year :</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button" (click)="resetForm(studentForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

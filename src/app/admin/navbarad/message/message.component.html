@@ -1,0 +1,10 @@
+<form class="example-form" #signInForm="ngForm" (ngSubmit)="onSubmit(signInForm)">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="rollno" name="Rollno" #head="ngModel" [(ngModel)]="message.rollno">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <textarea matInput placeholder="message" name="message" #body="ngModel" [(ngModel)]="message.message"></textarea>
+  </mat-form-field>
+  <input type="submit" value="Submit">
+</form>

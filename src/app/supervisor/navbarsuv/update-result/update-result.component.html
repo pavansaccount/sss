@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div id="formContent">
+    <br>
+    <form #signInForm="ngForm" (ngSubmit)="signInForm.valid && onSubmit(signInForm)">
+
+      <input type="text" name="rollno" #rollno="ngModel"  [(ngModel)]="model.rollno" placeholder="rollno" required [ngClass]="{'invalid-textbox' :signInForm.submitted && !rollno.valid }">
+      <div *ngIf="signInForm.submitted && rollno.errors?.required">
+        <label class="validation-message">rollno cannot be empty.</label>
+      </div>
+
+      <mat-form-field>
+        <mat-select name="year" #year="ngModel"  [(ngModel)]="model.year" placeholder="Select">
+          <mat-option value="year1sem1">year1sem1</mat-option>
+          <mat-option value="year1sem2">year1sem2</mat-option>
+          <mat-option value="year2sem1">year2sem1</mat-option>
+          <mat-option value="year2sem2">year2sem2</mat-option>
+          <mat-option value="year3sem1">year3sem1</mat-option>
+          <mat-option value="year3sem2">year3sem2</mat-option>
+          <mat-option value="year4sem1">year4sem1</mat-option>
+          <mat-option value="year4sem2">year4sem2</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <input type="text" name="subname" #subname="ngModel"  [(ngModel)]="model.subname" placeholder="subname" required [ngClass]="{'invalid-textbox' :signInForm.submitted && !subname.valid }">
+      <div *ngIf="signInForm.submitted && subname.errors?.required">
+        <label class="validation-message">subname cannot be empty.</label>
+      </div>
+
+      <input type="text" name="submarks" #submarks="ngModel"  [(ngModel)]="model.submarks" placeholder="submarks" required [ngClass]="{'invalid-textbox' :signInForm.submitted && !submarks.valid }">
+      <div *ngIf="signInForm.submitted && submarks.errors?.required">
+        <label class="validation-message">submarks cannot be empty.</label>
+      </div>
+
+
+      <br>
+      <input type="submit" value="Submit">
+    </form>
+    <!-- Error message -->
+   <!-- <div class="alert" *ngIf="serverErrorMessages">
+      {{serverErrorMessages}}
+    </div>-->
+  </div>
+</div>

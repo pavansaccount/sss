@@ -1,0 +1,12 @@
+<div  *ngFor="let fil of file">
+  <div class="url" *ngIf="fil.contentType === ('image/png' || 'image/jpeg' || 'image/gif'); else block">
+    <img src="http://localhost:5000/image/{{fil.filename}}" alt="" >
+  </div>
+  <ng-template #block>
+
+        <div>
+           <a href="http://localhost:5000/files/{{fil.filename}}" download>{{fil.filename}}</a>
+        </div>
+
+  </ng-template>
+</div>

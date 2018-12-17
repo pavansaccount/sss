@@ -1,0 +1,41 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <mat-card style="display: none"></mat-card>
+     <!-- <img mat-card-avatar class="example-header-image" src="http://localhost:5000/image/pavan.jpg"> -->
+        <h1 class="example-app-name">{{userDetails.rollno}}</h1>
+        <span class="example-spacer"></span>
+        <div class="example-button-row">
+            <button mat-raised-button color="green" (click)="onLogout()"><mat-icon>logout</mat-icon>Logout</button>
+        </div>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item routerLink="/dashboard">
+                    <mat-icon>dashboard</mat-icon> Dashboard</a>
+                    <a mat-list-item routerLink="/editstuprof">
+                        <mat-icon>supervised_user_circle</mat-icon> Edit Profile</a>
+                <a mat-list-item routerLink="/assignedsup">
+                    <mat-icon>assignment_ind</mat-icon>Assigned Supervisor</a>
+                <a mat-list-item routerLink="/reqsup">
+                    <mat-icon>assignment_returned</mat-icon>Request For Supervisor</a>
+                <a mat-list-item routerLink="/uploadcourse">
+                    <mat-icon>backup</mat-icon>Upload Coursework</a>
+                <a mat-list-item routerLink="/checkres">
+                    <mat-icon>check_circle</mat-icon>Check Results</a>
+                <a mat-list-item routerLink="/inbox">
+                    <mat-icon>inbox</mat-icon>Inbox</a>
+                <a mat-list-item routerLink="/notification">
+                    <mat-icon>notification_important</mat-icon>Notifications</a>
+                    <a mat-list-item routerLink="/updatepassstu">
+                        <mat-icon>updatepassword</mat-icon>Update Password</a>
+                      </mat-nav-list>
+
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</div>
